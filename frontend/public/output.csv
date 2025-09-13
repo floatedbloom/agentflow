@@ -1,0 +1,21 @@
+id,item_id,name,y,yhat,lo,hi,interval
+1,item_001,iPhone 15,150,180,160,200,7
+2,item_002,MacBook Pro,85,95,80,110,14
+3,item_003,Samsung TV,120,140,125,155,10
+4,item_004,Gaming Console,200,220,190,250,5
+5,item_005,Wireless Headphones,300,350,320,380,3
+6,item_006,Smart Watch,180,200,170,230,7
+7,item_007,Organic Bananas,450,500,480,520,1
+8,item_008,Milk,380,420,400,440,2
+9,item_009,Bread,250,280,260,300,1
+10,item_010,Chicken Breast,150,170,160,180,3
+11,item_011,Designer Jeans,80,90,75,105,14
+12,item_012,Winter Coats,60,75,65,85,21
+13,item_013,Sneakers,120,140,110,170,7
+14,item_014,Summer Dresses,95,110,90,130,10
+15,item_015,Garden Tools,40,50,45,55,30
+16,item_016,Furniture Set,25,35,30,40,45
+17,item_017,Basketball Shoes,110,130,120,140,7
+18,item_018,Yoga Mats,200,240,220,260,5
+19,item_019,Coffee Beans,180,200,190,210,3
+20,item_020,Espresso Machine,45,55,50,60,21

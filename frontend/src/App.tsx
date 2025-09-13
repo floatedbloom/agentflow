@@ -1,34 +1,41 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import BusinessSearch from './components/BusinessSearch'
+import SuggestionsScreen from './components/SuggestionsScreen'
+import type { Business } from './types'
+import { generateSuggestionData } from './data/dataLoad'
+import type { SuggestionData } from './types'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentScreen, setCurrentScreen] = useState<'search' | 'suggestions'>('search')
+  const [suggestionData, setSuggestionData] = useState<SuggestionData | null>(null)
+
+  const handleBusinessSelect = async (business: Business) => {
+    try {
+      const data = await generateSuggestionData(business)
+      setSuggestionData(data)
+      setCurrentScreen('suggestions')
+    } catch (error) {
+      console.error('Error generating suggestion data:', error)
+    }
+  }
+
+  const handleBackToSearch = () => {
+    setCurrentScreen('search')
+    setSuggestionData(null)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app">
+      {currentScreen === 'search' ? (
+        <BusinessSearch onBusinessSelect={handleBusinessSelect} />
+      ) : suggestionData ? (
+        <SuggestionsScreen 
+          suggestionData={suggestionData} 
+          onBack={handleBackToSearch} 
+        />
+      ) : null}
+    </div>
   )
 }
 
